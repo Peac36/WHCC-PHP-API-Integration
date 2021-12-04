@@ -9,4 +9,5 @@ interface EditorService {
     public function getDesigns();
     public function createEditor(CreateEditorRequest $request);
     public function EditEditor(string $editorId);
+    public function exportOrders($accountId, $editorsIds);
 }
