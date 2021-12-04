@@ -1,0 +1,16 @@
+{
+    "name": "peace36/whcc",
+    "description": "WHCC PHP API Integration",
+    "autoload": {
+        "psr-4": {
+            "Peace36\\Whcc\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Nikola Stoqnov",
+            "email": "peac36@abv.bg"
+        }
+    ],
+    "require": {}
+}
