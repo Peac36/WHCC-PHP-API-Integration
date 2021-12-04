@@ -8,5 +8,5 @@ interface EditorService {
     public function getProducts();
     public function getDesigns();
     public function createEditor(CreateEditorRequest $request);
-    public function editeEditor(string $editorId);
+    public function EditEditor(string $editorId);
 }
