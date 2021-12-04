@@ -3,7 +3,12 @@
     "description": "WHCC PHP API Integration",
     "autoload": {
         "psr-4": {
-            "Peace36\\WHCC\\": "src/"
+            "Peac36\\Whcc\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
         }
     },
     "authors": [
