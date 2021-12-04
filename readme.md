@@ -1,3 +1,7 @@
 ### WHCC PHP API Integration
 
-[Documentation](https://developer.whcc.com/docs/)
+[Official Documentation](https://developer.whcc.com/docs/)
+
+Example usage of the Editor:
+
+![image](./images/editor.png)
