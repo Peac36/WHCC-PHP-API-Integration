@@ -12,5 +12,7 @@
             "email": "peac36@abv.bg"
         }
     ],
-    "require": {}
+    "require": {
+        "guzzlehttp/guzzle": "^7.0"
+    }
 }
