@@ -1,6 +1,6 @@
 <?php
 
-namespace Peace36\Whcc\Service;
+namespace Peac36\Whcc\Service;
 
 use GuzzleHttp\RequestOptions;
 use GuzzleHttp\ClientInterface;
