@@ -14,7 +14,7 @@ class EditorServiceTest extends TestCase
     {
         $response_body = ['product_key' => 'product_value'];
 
-        $service = $this->prepareTheService([
+        $service = $this->mockAPIResponses([
             new Response(200, [], json_encode($response_body)),
         ]);
 
@@ -28,7 +28,7 @@ class EditorServiceTest extends TestCase
     {
         $response_body = ['design_key' => 'design_value'];
 
-        $service = $this->prepareTheService([
+        $service = $this->mockAPIResponses([
             new Response(200, [], json_encode($response_body)),
         ]);
 
@@ -37,7 +37,7 @@ class EditorServiceTest extends TestCase
         $this->assertEquals($response_body, $products);
     }
 
-    public function prepareTheService(array $responses)
+    public function mockAPIResponses(array $responses)
     {
         $mock = new MockHandler($responses);
         $handlerStack = HandlerStack::create($mock);
