@@ -2,10 +2,11 @@
 
 namespace Peac36\Whcc\Service;
 
-use GuzzleHttp\ClientInterface;
+use Peac36\Whcc\Utils;
 use GuzzleHttp\RequestOptions;
-use Peac36\Whcc\Contracts\OrderService as OrderServiceContract;
+use GuzzleHttp\ClientInterface;
 use Peac36\Whcc\Contracts\Request;
+use Peac36\Whcc\Contracts\OrderService as OrderServiceContract;
 
 class OrderService implements OrderServiceContract
 {
@@ -18,7 +19,7 @@ class OrderService implements OrderServiceContract
 
     public function getCatalog()
     {
-        return json_decode($this->client->get('catalog')->getBody()->getContents(), true);
+        return Utils::parseJson($this->client->get('catalog')->getBody()->getContents());
     }
 
     public function createOrder(Request $request)
@@ -26,12 +27,12 @@ class OrderService implements OrderServiceContract
         $response = $this->client->post('OrderImport', [
             RequestOptions::FORM_PARAMS => $request->toArray(),
         ]);
-        return json_decode($response->getBody()->getContents(), true);
+        return Utils::parseJson($response->getBody()->getContents());
     }
 
     public function confirmOrder(string $confirmation)
     {
         $response = $this->client->post("OrderImport/Submit/{$confirmation}");
-        return json_decode($response->getBody()->getContents(), true);
+        return Utils::parseJson($response->getBody()->getContents());
     }
 }

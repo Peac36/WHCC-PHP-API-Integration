@@ -2,11 +2,12 @@
 
 namespace Peac36\Whcc\Service;
 
+use Peac36\Whcc\Utils;
 use GuzzleHttp\RequestOptions;
 use GuzzleHttp\ClientInterface;
-use Peac36\Whcc\Contracts\EditorService as EditorServiceContract;
 use Peac36\Whcc\Contracts\Request;
 use Peac36\Whcc\Decorators\AuthHttpClientDecorator;
+use Peac36\Whcc\Contracts\EditorService as EditorServiceContract;
 
 class EditorService implements EditorServiceContract
 {
@@ -24,7 +25,7 @@ class EditorService implements EditorServiceContract
      */
     public function getProducts()
     {
-        return json_decode($this->client->get('products')->getBody()->getContents(), true);
+        return Utils::parseJson($this->client->get('products')->getBody()->getContents());
     }
 
     /**
@@ -34,7 +35,7 @@ class EditorService implements EditorServiceContract
      */
     public function getDesigns()
     {
-        return json_decode($this->client->get('designs')->getBody()->getContents(), true);
+        return Utils::parseJson($this->client->get('designs')->getBody()->getContents());
     }
 
     /**
@@ -49,7 +50,7 @@ class EditorService implements EditorServiceContract
             RequestOptions::BODY => json_encode($request->toArray()),
         ]);
 
-        return json_decode($response->getBody()->getContents(), true);
+        return Utils::parseJson($response->getBody()->getContents());
     }
 
     /**
@@ -60,7 +61,7 @@ class EditorService implements EditorServiceContract
      */
     public function editEditor(string $editorId)
     {
-        return json_decode($this->client->post("/editors/{$editorId}/edit-link")->getBody()->getContents(), true);
+        return Utils::parseJson($this->client->post("/editors/{$editorId}/edit-link")->getBody()->getContents());
     }
 
     /**
@@ -81,7 +82,7 @@ class EditorService implements EditorServiceContract
             AuthHttpClientDecorator::ACCOUNT_ID_KEY => $accountId,
         ]);
 
-        return json_decode($response->getBody()->getContents(), true);
+        return Utils::parseJson($response->getBody()->getContents());
     }
 
 }
