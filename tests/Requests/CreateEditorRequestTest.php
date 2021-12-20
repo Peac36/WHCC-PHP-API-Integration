@@ -7,6 +7,9 @@ use Peac36\Whcc\Requests\CreateEditorRequest;
 
 class CreateEditorRequestTest extends TestCase
 {
+    /**
+     * @var CreateEditorRequest
+     */
     protected $request;
 
     protected function setUp(): void
@@ -56,9 +59,36 @@ class CreateEditorRequestTest extends TestCase
         $this->assertEquals(["test"], $this->request->getSettings());
     }
 
+    /** @test */
     public function it_can_set_photos()
     {
         $this->request->setPhotos(["test"]);
         $this->assertEquals(["test"], $this->request->getPhotos());
+    }
+
+    /** @test */
+    public function it_can_be_parsed_to_array()
+    {
+        $this->request->setUserId(1);
+        $this->request->setProductId(1);
+        $this->request->setDesignId(1);
+        $this->request->setCompleteRedirect(['text' => "test", "url" => "#"]);
+        $this->request->setCancelRedirect(["text" => "test", "url" => "#"]);
+        $this->request->setSettings(["test" => "test"]);
+        $this->request->setPhotos([1,2,3,4,5,6]);
+
+        $expexted_format = [
+            "userId" => 1,
+            "productId" => 1,
+            "designId" => 1,
+            "redirects" => [
+                "complete" => ['text' => "test", "url" => "#"],
+                "cancel" => ["text" => "test", "url" => "#"],
+            ],
+            "settings" => ["test" => "test"],
+            "photos" => [1,2,3,4,5,6],
+        ];
+
+        $this->assertEquals($expexted_format, $this->request->toArray());
     }
 }
