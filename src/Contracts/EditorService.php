@@ -6,6 +6,6 @@ interface EditorService {
     public function getProducts();
     public function getDesigns();
     public function createEditor(Request $request);
-    public function EditEditor(string $editorId);
+    public function editEditor(string $editorId);
     public function exportOrders($accountId, $editorsIds);
 }

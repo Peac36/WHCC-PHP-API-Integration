@@ -58,7 +58,7 @@ class EditorService implements EditorServiceContract
      * @param string $editorId
      * @return void
      */
-    public function EditEditor(string $editorId)
+    public function editEditor(string $editorId)
     {
         return json_decode($this->client->post("/editors/{$editorId}/edit-link")->getBody()->getContents(), true);
     }
