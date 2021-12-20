@@ -6,6 +6,7 @@ use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
 use PHPUnit\Framework\TestCase;
 use GuzzleHttp\Handler\MockHandler;
+use Peac36\Whcc\Requests\CreateEditorRequest;
 use Peac36\Whcc\Service\EditorService;
 
 class EditorServiceTest extends TestCase
@@ -36,6 +37,19 @@ class EditorServiceTest extends TestCase
         $products = $service->getProducts();
 
         $this->assertEquals($response_body, $products);
+    }
+
+    /** @test  */
+    public function it_can_generate_an_editor()
+    {
+        $response_body = 'test_response';
+        $service = $this->mockAPIResponses([
+            new Response(200, [], json_encode($response_body)),
+        ]);
+
+        $response = $service->createEditor(new CreateEditorRequest);
+
+        $this->assertEquals($response_body, $response);
     }
 
     /** @test  */
