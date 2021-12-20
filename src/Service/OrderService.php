@@ -1,6 +1,6 @@
 <?php
 
-namespace Peace36\Whcc\Service;
+namespace Peac36\Whcc\Service;
 
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\RequestOptions;
@@ -23,13 +23,15 @@ class OrderService implements OrderServiceContract
 
     public function createOrder(Request $request)
     {
-        return $this->client->post('OrderImport', [
-            RequestOptions::BODY => $request->toArray(),
+        $response = $this->client->post('OrderImport', [
+            RequestOptions::FORM_PARAMS => $request->toArray(),
         ]);
+        return json_decode($response->getBody()->getContents(), true);
     }
 
     public function confirmOrder(string $confirmation)
     {
-        return $this->client->post("OrderImport/Submit/{$confirmation}");
+        $response = $this->client->post("OrderImport/Submit/{$confirmation}");
+        return json_decode($response->getBody()->getContents(), true);
     }
 }
