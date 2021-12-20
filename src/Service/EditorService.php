@@ -4,8 +4,8 @@ namespace Peace36\Whcc\Service;
 
 use GuzzleHttp\RequestOptions;
 use GuzzleHttp\ClientInterface;
-use Peac36\Whcc\Requests\CreateEditorRequest;
 use Peac36\Whcc\Contracts\EditorService as EditorServiceContract;
+use Peac36\Whcc\Contracts\Request;
 use Peac36\Whcc\Decorators\AuthHttpClientDecorator;
 
 class EditorService implements EditorServiceContract
@@ -40,10 +40,10 @@ class EditorService implements EditorServiceContract
     /**
      * @see https://developer.whcc.com/pages/editor-api/create-editor/
      *
-     * @param CreateEditorRequest $request
+     * @param Request $request
      * @return various
      */
-    public function createEditor(CreateEditorRequest $request)
+    public function createEditor(Request $request)
     {
         $response = $this->client->post('editors', [
             RequestOptions::BODY => json_encode($request->toArray()),
