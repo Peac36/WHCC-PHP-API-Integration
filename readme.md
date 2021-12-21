@@ -2,6 +2,13 @@
 
 [Official Documentation](https://developer.whcc.com/docs/)
 
-Example usage of the Editor:
 
-![image](./images/editor.png)
+#### UML Diagrams
+
+##### Editor Service
+
+![editor](./images/editor-service-uml.png)
+
+##### Order Service
+
+![order](./images/order-service-uml.png)
