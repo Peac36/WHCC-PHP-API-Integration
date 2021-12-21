@@ -23,7 +23,7 @@ class AuthHttpClientDecorator implements ClientInterface
 
     protected $key;
 
-    protected $string;
+    protected $accessSecret;
 
     public function __construct(ClientInterface $client, string $key, string $secret)
     {
